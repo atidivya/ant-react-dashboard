@@ -1,18 +1,14 @@
 import React from "react";
 import "./App.css";
-import { Layout, Typography, Avatar, Menu, Breadcrumb, Tree } from "antd";
+import { Layout, Typography, Avatar, Menu, Breadcrumb } from "antd";
 import { UserOutlined, MailOutlined } from "@ant-design/icons";
 import { Slot, Bingo } from "./Games";
 
 const { Header, Footer, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 const { Title } = Typography;
-const { TreeNode } = Tree;
 
 function App() {
-  let bestSlot = new Slot("classic-cherries", "Slot", "95%");
-  let bestBingo = new Bingo("2050 Bingo", "Bingo", "Yes");
-
   return (
     <React.StrictMode>
       <div className="App">
@@ -48,31 +44,12 @@ function App() {
                   <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
                 </Breadcrumb>
                 <div className="site-layout-content">
-                  <Tree key="0" showLine defaultSelectedKeys={["0-0-0"]}>
-                    <TreeNode title={bestSlot.getName()} key="0-0-0">
-                      <TreeNode
-                        title={"Slot -" + bestSlot.getName()}
-                        key="0-0-0-1"
-                      />
-                      <TreeNode
-                        title={"RTP-" + bestSlot.getRtp()}
-                        key="0-0-0-2"
-                      />
-                    </TreeNode>
-
-                    <TreeNode title={bestBingo.getName()} key="0-0-1">
-                      <TreeNode
-                        title={"Bingo -" + bestBingo.getName()}
-                        key="0-0-1-1"
-                      />
-                      <TreeNode
-                        title={
-                          "Mobile Friendly -" + bestBingo.getMobileFriendly()
-                        }
-                        key="0-0-1-2"
-                      />
-                    </TreeNode>
-                  </Tree>
+                  <Slot name="Classic Cherries" type="Slot" rtp="95%" />
+                  <Bingo
+                    name="2050 Bingo"
+                    type="Bingo"
+                    isMobileFriendly="Yes"
+                  />
                 </div>
               </Content>
               <Footer style={{ textAlign: "center" }}>
